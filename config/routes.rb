@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'listings/filter', to: 'listings#filter', as: :filter_listing
 
 
-  resources :listings, only: %i[show]
+  resources :listings, only: %i[index show]
 
   resources :listings, only: [] do
     resources :bookings, only: %i[create new]

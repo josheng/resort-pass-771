@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'listings/search', to: 'listings#search', as: :search_listing
   get 'listings/filter', to: 'listings#filter', as: :filter_listing
 
+
   resources :listings, only: %i[show]
 
   resources :listings, only: [] do
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: %i[index show]
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,4 +1,10 @@
-<h1 class="text-center">Resort Pass</h1>
-<%= render 'shared/searchbar' %>
+<div class="title-banner">
+  <h1 class="text-center">Get pool, spa, and amenity access <span style="color: #00c2d1;">at luxurious hotels</span></h1>
+</div>
+
+<%= render 'shared/searchbar' , class:"search-bar text-center"%>
+<img src="https://images.unsplash.com/photo-1525908106172-c366bafe972e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&ixid=MnwxfDB8MXxyYW5kb218MHx8cmVzb3J0fHx8fHx8MTYzODI2MzE1OQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1920" alt="" style="object-fit: cover;">
 <h2 class="text-center my-5"><strong>Explore</strong> Locations</h2>
-<%= render 'shared/cards'%>
+<div class="container">
+  <%= render 'shared/cards'%>
+</div>

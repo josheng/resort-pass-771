@@ -22,7 +22,9 @@ puts "Seeding the listing"
     name: "#{city} Hotel",
     address: Faker::Address.street_address,
     details: Faker::Lorem.paragraph(sentence_count: 10),
-    city_state: city,
+    city: city,
+    state: Faker::Address.state,
+    country: Faker::Address.country,
     user_id: 1
   )
 end

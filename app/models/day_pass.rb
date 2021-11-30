@@ -1,3 +1,2 @@
-class DayPass < ApplicationRecord
-  belongs_to :listing
+class DayPass < Reservation
 end

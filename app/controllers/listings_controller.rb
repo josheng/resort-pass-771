@@ -3,6 +3,8 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    @reservation= @listing.reservations.find_by(type: 'DayPass')
+    @booking = Booking.new
   end
 
   def search

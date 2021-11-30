@@ -1,0 +1,2 @@
+class DayPass < Reservation
+end

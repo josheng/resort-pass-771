@@ -1,0 +1,17 @@
+<% @listing = Listing.all %>
+<div class="cards">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/1920x1080/?<%= @listing[0].state %>)">
+    <small>Explore</small>
+    <%=  @listing[0].state %>
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/1920x1080/?<%= @listing[1].state %>)">
+    <small>Explore</small>
+    <%=  @listing[1].state %>
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/1920x1080/?<%= @listing[2].state %>)">
+    <small>Explore</small>
+    <%=  @listing[2].state %>
+  </div>
+</div>

@@ -4,7 +4,7 @@
   <div class="card-product-infos">
     <h2><%= listing.name %><span class=""><small><%= listing.city %></small></h2>
     <p><%= listing.details %></p>
-    <%= link_to "View", day_pass_path(listing) %>
+    <%= link_to "View", listing_path(listing) %>
   </div>
 </div>
 <% end %>

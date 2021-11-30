@@ -15,6 +15,7 @@ class ListingsController < ApplicationController
   end
 
   def filter
-    @listing = Listing.where(state: params[:id])
+    filter = params["format"]
+    @listing = Listing.where(state: filter)
   end
 end

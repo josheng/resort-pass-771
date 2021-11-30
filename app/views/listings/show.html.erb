@@ -6,16 +6,25 @@
     <div class="card-body">
   <% @listing.reservations.each do |pass| %>
   <div class="div">
-      <h5 class="card-title"><%= pass.name %></h5>
-      <p class="card-text">$<%= pass.price %></p>
+      <h5 class="card-title">Adult</h5>
+      <p class="card-text">$<%= pass.adult_price %></p>
+      <h5 class="card-title">Child</h5>
+      <p class="card-text">$<%= pass.child_price %></p>
   </div>
   <% end %>
-  <%= simple_form_for(@bookings) do |f| %>
-    <%= f.input :booking_date, as: date %>
-  <% end %>
+
 
     </div>
 </div>
+
+
+<%= simple_form_for [@listing, @booking] do |f| %>
+  <%= f.input :booking_date, as: :date %>
+  <%= f.input :no_of_adult, as: :integer %>
+  <%= f.input :no_of_child, as: :integer %>
+  <%= f.hidden_field :reservation_id, value: @reservation.id %>
+  <%= f.submit :create_booking %>
+<% end %>
 
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">

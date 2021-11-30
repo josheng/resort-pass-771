@@ -1,12 +1,1 @@
-
-
-<% @listings.each do |listing| %>
-<div class="card-product my-3">
-  <img src="https://source.unsplash.com/400x300/?resort" />
-  <div class="card-product-infos">
-    <h2><%= listing.name %><span class=""><small><%= listing.city %></small></h2>
-    <p><%= listing.details %></p>
-    <%= link_to "View", day_pass_path(listing)  %>
-  </div>
-</div>
-<% end %>
+<%= render 'shared/result' %>

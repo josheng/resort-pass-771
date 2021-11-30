@@ -36,14 +36,12 @@ puts "Seeding the Daypasses"
   DayPass.create!(
     name: "Adult",
     price: rand(89..129),
-    daypass_type: "Day Pass",
     listing_id: index + 1
   )
   puts "Creating Child Prices"
   DayPass.create!(
     name: "Child",
     price: rand(39..69),
-    daypass_type: "Day Pass",
     listing_id: index + 1
   )
 end

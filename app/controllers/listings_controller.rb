@@ -16,6 +16,6 @@ class ListingsController < ApplicationController
 
   def filter
     filter = params["format"]
-    @listing = Listing.where(state: filter)
+    @listings = Listing.where(state: filter)
   end
 end

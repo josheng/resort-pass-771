@@ -8,17 +8,21 @@
 
 puts "Cleaning DB"
 Listing.destroy_all
+User.destroy_all
+
+puts "Creating the dummy hotel partner"
+User.create!(email: "test@test.com", password: "12345678!", hotel_partner: true)
 
 puts "Seeding the listing"
 
 20.times do
-  puts "Creating the listing
-  "
+  puts "Creating the listing"
+  city = Faker::Nation.capital_city
   Listing.create!(
-    name: "#{Faker::Nation.capital_city} Hotel",
+    name: "#{city} Hotel",
     address: Faker::Address.street_address,
     details: Faker::Lorem.paragraph(sentence_count: 10),
-    city_state: Faker::Nation.capital_city,
+    city_state: city,
     user_id: 1
   )
 end

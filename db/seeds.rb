@@ -29,4 +29,24 @@ puts "Seeding the listing"
   )
 end
 
+puts "Seeding the Daypasses"
+
+20.times do |index|
+  puts "Creating Adult Prices"
+  DayPass.create!(
+    name: "Adult",
+    price: rand(89..129),
+    daypass_type: "Day Pass",
+    listing_id: index + 1
+  )
+  puts "Creating Child Prices"
+  DayPass.create!(
+    name: "Child",
+    price: rand(39..69),
+    daypass_type: "Day Pass",
+    listing_id: index + 1
+  )
+end
+
+
 puts "Seeding Done"

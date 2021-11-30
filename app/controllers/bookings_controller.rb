@@ -1,4 +1,8 @@
 class BookingsController < ApplicationController
+  def index
+    @bookings = current_user.bookings
+  end
+
   def new
     @booking = Booking.new
   end
@@ -10,10 +14,14 @@ class BookingsController < ApplicationController
     @booking.total_price = (@booking.no_of_adult * @booking.reservation.adult_price) + (@booking.no_of_child * @booking.reservation.child_price)
     # @booking.listing = @booking.reservation.listing
     if @booking.save
-      redirect_to root_path
+      redirect_to @booking
     else
       render listing_path
     end
+  end
+
+  def show
+    @bookings = current_user.bookings
   end
 
   private

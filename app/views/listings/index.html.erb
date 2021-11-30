@@ -1,0 +1,6 @@
+<div class="container">
+  <h2 class="my-3">Hotels</h2>
+  <% @listings.each do |l| %>
+    <p><%= link_to "#{l.name}", listing_path(l) %></p>
+  <% end %>
+</div>

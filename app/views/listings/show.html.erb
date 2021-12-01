@@ -31,8 +31,8 @@
 <div class = "container mt-3" >
   <div class="row">
     <div class="col-8">
-      <h2>InterContinental Miami</h2>
-        <ul style="list-style: none">
+      <h2><%= @listing.name %></h2>
+          <ul style="list-style: none">
           <li>
           <i class="fas fa-cocktail"></i>
           <i class="fas fa-utensils"></i>
@@ -44,7 +44,7 @@
 
 
       <div class = "hotel-intro">
-      <p>Treat yourself to a premier luxury experience in tropical paradise at the InterContinental Miami. Built around Henry Moore’s famous sculpture, “The Spindle,” the hotel lies along the downtown waterfront, overlooking beautiful Biscayne Bay. Offering luxurious pool and spa amenities, the beautiful waterfront oasis has all the elements for a perfect vacation day. Enjoy a refreshing swim in the rooftop pool or lounge the day away in the Florida sunshine, while sipping delicious cocktails from the poolside bar, Bluewater. A day spent at the InterContinental Miami is the ultimate retreat!</p>
+      <p><%= @listing.details %></p>
       </div>
 
       <div class = "day-pass">
@@ -91,6 +91,14 @@
         <p>Day Passes can be cancelled 24 hours before your booked date.</p>
         <p>Spa Passes can be cancelled 24 hours before your booked date.</p>
       </div>
+
+    </div>
+
+
+    <div id="map"
+       style="width: 100%; height: 600px;"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 
     </div>
     <div class="col-4">

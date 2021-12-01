@@ -14,15 +14,7 @@ h2 span{
   justify-content: center;
   align-items: center;
 }
-.search-bar-input {
-  height: 80px;
-  font-size: 24px;
-}
 
-.btn-size {
-  height: 80px;
-  margin: 0 1rem;
-}
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
@@ -56,9 +48,7 @@ h2 span{
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-  .search-bar-input {
-  width: 750px;
-  }
+
   .btn-size {
     width: 200px;
   }
@@ -66,9 +56,7 @@ h2 span{
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  .search-bar-input {
-  width: 750px;
-  }
+
   .btn-size {
     width: 200px;
   }

@@ -50,7 +50,7 @@ puts "Seeding the reviews 🌱"
     Review.create!(
       title: Faker::Marketing.buzzwords,
       content: Faker::Restaurant.review,
-      rating: rand(1..5),
+      rating: rand(3..5),
       user_id: rand(2..21),
       listing_id: index + 1
     )

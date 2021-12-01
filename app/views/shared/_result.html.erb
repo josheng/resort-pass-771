@@ -1,10 +1,13 @@
-<% @listings.each do |listing| %>
-<div class="card-product my-3" style="border-radius: 1rem;">
-  <img src="https://source.unsplash.com/400x300/?resort" />
-  <div class="card-product-infos">
-    <h2><%= listing.name %><span class=""><small><%= listing.city %></small></h2>
-    <p><%= listing.details %></p>
-    <%= link_to "View", listing_path(listing) %>
+<div class="container">
+  <% @listings.each do |listing| %>
+  <div class="card-product my-3" style="border-radius: 1rem;">
+    <img src="https://source.unsplash.com/400x300/?<%= listing.city%>,resort" />
+    <div class="card-product-infos">
+      <h2><%= listing.name %><span class=""></h2>
+      <small><%= listing.city %></small>
+      <p><%= listing.details %></p>
+      <%= link_to "View", listing_path(listing) , class:"btn btn-info my-2"%>
+    </div>
   </div>
+  <% end %>
 </div>
-<% end %>

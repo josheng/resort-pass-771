@@ -1,0 +1,29 @@
+<!--
+<div class="cards">
+  <% Listing.by_most_reviews.each do |list| %>
+    <%= link_to filter_listing_path(list) do  %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/1920x1080/?<%= list.state.gsub(" ","-") %>)">
+        <p><%=  list.name %></p>
+        <p>Reviews ⭐<%= list.reviews.count %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div> -->
+
+<div class="cards-popular">
+  <% Listing.by_most_reviews.each do |list| %>
+      <div class="card-trip" style="border-radius: 1rem;">
+        <img src="https://source.unsplash.com/1920x1080/?<%= list.state.gsub(" ","-") %>" />
+        <div class="card-trip-infos">
+          <div>
+            <p><%= list.state %></p>
+            <h2><%= list.name %></h2>
+            <% reviews_score = 0  %>
+            <% list.reviews.each { |r| reviews_score += r["rating"] } %>
+            <% average_score = reviews_score /  list.reviews.count %>
+            <p><%average_score.times do %>⭐ <% end %> <%= list.reviews.count %> Reviews </p>
+          </div>
+        </div>
+    </div>
+  <% end %>
+</div>

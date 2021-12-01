@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
-    @reservation= @listing.reservations.find_by(type: 'DayPass')
+    @reservation = @listing.reservations.find_by(type: 'DayPass')
     @booking = Booking.new
     @markers = {lat: 1.3019, lng: 103.83 }
   end

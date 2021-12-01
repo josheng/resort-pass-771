@@ -1,0 +1,17 @@
+<div class="container border-top">
+  <div class="row pt-3">
+    <div class="col">
+      <h3>Reviews</h3>
+      <% @listing.reviews.each do |list| %>
+      <div class="card-body border-bottom border-top">
+        <h4>
+        <% list.rating.times do %>⭐️<% end %> <span><%= list.title %></span>
+        </h4>
+        <p>
+        <%= list.created_at.strftime("%B %d, %Y") %> <%= list.user.email %>
+        </p>
+        <p><small><%= list.content %></small></p>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,30 +1,9 @@
 
 
+<!---
+<%= render "shared/passcards" %>
+--->
 
-<div class="card text-black mb-3" style="max-width: 18rem;">
-    <div class="card-header"><%= @listing.reservations.first.type.split("P").join(" P") %></div>
-    <div class="card-body">
-  <% @listing.reservations.each do |pass| %>
-  <div class="div">
-      <h5 class="card-title">Adult</h5>
-      <p class="card-text">$<%= pass.adult_price %></p>
-      <h5 class="card-title">Child</h5>
-      <p class="card-text">$<%= pass.child_price %></p>
-  </div>
-  <% end %>
-
-
-    </div>
-</div>
-
-
-<%= simple_form_for [@listing, @booking] do |f| %>
-  <%= f.input :booking_date, as: :date %>
-  <%= f.input :no_of_adult, as: :integer %>
-  <%= f.input :no_of_child, as: :integer %>
-  <%= f.hidden_field :reservation_id, value: @reservation.id %>
-  <%= f.submit :create_booking %>
-<% end %>
 
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -50,66 +29,78 @@
 </div>
 
 <div class = "container mt-3" >
-  <h2>InterContinental Miami</h2>
-  <ul style="list-style: none">
-    <li>
-    <i class="fas fa-cocktail"></i>
-    <i class="fas fa-utensils"></i>
-    <i class="fas fa-swimming-pool"></i>
-    <i class="fas fa-hot-tub"></i>
-    <i class="fas fa-dumbbell"></i>
-    </li>
-  </ul>
-</div>
-  <div class = "container hotel-intro">
-  <div class = "hotel-intro">
-  <p>Treat yourself to a premier luxury experience in tropical paradise at the InterContinental Miami. Built around Henry Moore’s famous sculpture, “The Spindle,” the hotel lies along the downtown waterfront, overlooking beautiful Biscayne Bay. Offering luxurious pool and spa amenities, the beautiful waterfront oasis has all the elements for a perfect vacation day. Enjoy a refreshing swim in the rooftop pool or lounge the day away in the Florida sunshine, while sipping delicious cocktails from the poolside bar, Bluewater. A day spent at the InterContinental Miami is the ultimate retreat!</p>
+  <div class="row">
+    <div class="col-8">
+      <h2>InterContinental Miami</h2>
+        <ul style="list-style: none">
+          <li>
+          <i class="fas fa-cocktail"></i>
+          <i class="fas fa-utensils"></i>
+          <i class="fas fa-swimming-pool"></i>
+          <i class="fas fa-hot-tub"></i>
+          <i class="fas fa-dumbbell"></i>
+          </li>
+        </ul>
+
+
+      <div class = "hotel-intro">
+      <p>Treat yourself to a premier luxury experience in tropical paradise at the InterContinental Miami. Built around Henry Moore’s famous sculpture, “The Spindle,” the hotel lies along the downtown waterfront, overlooking beautiful Biscayne Bay. Offering luxurious pool and spa amenities, the beautiful waterfront oasis has all the elements for a perfect vacation day. Enjoy a refreshing swim in the rooftop pool or lounge the day away in the Florida sunshine, while sipping delicious cocktails from the poolside bar, Bluewater. A day spent at the InterContinental Miami is the ultimate retreat!</p>
+      </div>
+
+      <div class = "day-pass">
+        <h2>Day Pass includes:</h2>
+        <ul>
+          <li>Outdoor rooftop pool</li>
+          <li>Lounge chair (based on availability)</li>
+          <li>Food and drinks available for purchase from Bluewater</li>
+          <li>Towel service</li>
+          <li>Changing rooms and lockers</li>
+          <li>Fitness center</li>
+          <li>Refreshing water station</li>
+          <li>Complimentary wifi</li>
+          <li>Discounted valet parking available for $12/day</li>
+        </ul>
+      </div>
+
+      <div class = "spa-pass">
+        <h2>Spa Pass includes:</h2>
+        <p>Valued at $250</p>
+        <ul>
+          <li>Day Pass (all amenities included in the Day Pass)</li>
+          <li>50-minute massage treatment at mySpa</li>
+          <li>Relaxation room</li>
+          <li>Steam room and sauna (temporarily closed)</li>
+          <li>Complimentary glass of champagne</li>
+          <li>Complimentary valet parking for up to 4 hours</li>
+        </ul>
+        <p>Instructions to schedule your treatment time will be provided after booking.</p>
+      </div>
+
+      <div class="grey-box">
+        <strong>How it works</strong>
+        <p>1. Select number of people, an available day in the calendar, and book</p>
+        <p>2. Receive booking confirmation with details and instructions</p>
+        <p>3. Bring valid photo ID to hotel and check-in at the Hotel Concierge desk. You will receive a day use wristband.</p>
+        <p>4. Enjoy your daycation!</p>
+        <br>
+        <strong>Cancellation Policy</strong>
+        <p>To read our full cancellation policy, click here.</p>
+        <br>
+        <strong>Cancel Online</strong>
+        <p>You can cancel your booking online for a full refund back to your original payment method or for ResortPass Credit to use another time. Bookings can be cancelled online up until the following times.</p>
+        <p>Day Passes can be cancelled 24 hours before your booked date.</p>
+        <p>Spa Passes can be cancelled 24 hours before your booked date.</p>
+      </div>
+
+    </div>
+    <div class="col-4">
+    <%= render "shared/passcards" %>
+    </div>
   </div>
-    <div class = "day-pass">
-      <h2>Day Pass includes:</h2>
-      <ul>
-        <li>Outdoor rooftop pool</li>
-        <li>Lounge chair (based on availability)</li>
-        <li>Food and drinks available for purchase from Bluewater</li>
-        <li>Towel service</li>
-        <li>Changing rooms and lockers</li>
-        <li>Fitness center</li>
-        <li>Refreshing water station</li>
-        <li>Complimentary wifi</li>
-        <li>Discounted valet parking available for $12/day</li>
-      </ul>
-    </div>
+</div>
 
-    <div class = "spa-pass">
-      <h2>Spa Pass includes:</h2>
-      <p>Valued at $250</p>
-      <ul>
-        <li>Day Pass (all amenities included in the Day Pass)</li>
-        <li>50-minute massage treatment at mySpa</li>
-        <li>Relaxation room</li>
-        <li>Steam room and sauna (temporarily closed)</li>
-        <li>Complimentary glass of champagne</li>
-        <li>Complimentary valet parking for up to 4 hours</li>
-      </ul>
-      <p>Instructions to schedule your treatment time will be provided after booking.</p>
-    </div>
-
-    <div class="grey-box">
-      <strong>How it works</strong>
-      <p>1. Select number of people, an available day in the calendar, and book</p>
-      <p>2. Receive booking confirmation with details and instructions</p>
-      <p>3. Bring valid photo ID to hotel and check-in at the Hotel Concierge desk. You will receive a day use wristband.</p>
-      <p>4. Enjoy your daycation!</p>
-      <br>
-      <strong>Cancellation Policy</strong>
-      <p>To read our full cancellation policy, click here.</p>
-      <br>
-      <strong>Cancel Online</strong>
-      <p>You can cancel your booking online for a full refund back to your original payment method or for ResortPass Credit to use another time. Bookings can be cancelled online up until the following times.</p>
-      <p>Day Passes can be cancelled 24 hours before your booked date.</p>
-      <p>Spa Passes can be cancelled 24 hours before your booked date.</p>
-    </div>
-
+    <%= render "shared/reviewcard" %>
+<div class="container">
     <div class="footer">
       <div>
         <div class="hotel-logo">
@@ -152,4 +143,5 @@
         </ul>
       </div>
     </div>
+</div>
 </div>

@@ -2,7 +2,7 @@
 <div class="cards">
   <% @listing.first(6).each do |list| %>
     <%= link_to filter_listing_path(list.state) do  %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/1920x1080/?<%= list.state %>)">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/1920x1080/?<%= list.state.gsub(" ","-") %>)">
         <small>Explore</small>
         <%=  list.state %>
       </div>

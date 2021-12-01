@@ -3,7 +3,7 @@
   <div class="row row-cols-3">
   <br>
     <% @bookings.each do  |b| %>
-    <div class="card mx-5" style="border-radius: 20px; padding: 20px;">
+    <div class="card mx-2" style="border-radius: 20px; padding: 20px;">
       <h1><%= b.reservation.listing.name %></h1>
       <h1>Booking id = <%= b.id %></h1>
       <h3>Adults = <%= b.no_of_adult %></h3>

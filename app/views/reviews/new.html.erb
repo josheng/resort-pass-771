@@ -1,6 +1,12 @@
 <div class="container">
-  <%= simple_form_for [@listing, @review] do |f| %>
-      <%= raise %>
+  <h1>Create a review for <%= current_user.bookings.find(params[:format]).reservation.listing.name  %></h1>
+  <%= simple_form_for @review do |f| %>
+    <%= f.input :title, required: true %>
+    <%= f.input :content, as: :text, required: true %>
+    <%= f.input :rating, collection: 1..5, as: :radio_buttons, required: true  %>
+    <%= f.hidden_field :listing_id, value: current_user.bookings.find(params[:format]).reservation.listing.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit %>
   <% end %>
 
 </div>

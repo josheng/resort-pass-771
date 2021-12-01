@@ -9,7 +9,7 @@
       <p><u>Total Pax</u></p>
       <p>Adult: <%= @bookings.no_of_adult %></p>
       <p>Child: <%= @bookings.no_of_child %></p>
-      <%= link_to "Leave a Review", new_listing_review_path(@bookings)  %>
+      <%= link_to "Leave a Review", new_review_path(@bookings)  %>
     </div>
     <h2 class="card-trip-pricing">$<%= @bookings.total_price %></h2>
   </div>

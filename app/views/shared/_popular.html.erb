@@ -14,7 +14,7 @@
   <% Listing.by_most_reviews.each do |list| %>
     <%= link_to listing_path(list) do %>
       <div class="card-trip" style="border-radius: 1rem;">
-        <img src="https://source.unsplash.com/1920x1080/?<%= list.state.gsub(" ","-") %>" />
+        <img src="https://source.unsplash.com/1920x1080/?<%= list.city.gsub(" ","-") %>,resort" />
         <div class="card-trip-infos">
           <div>
             <p><%= list.state %></p>

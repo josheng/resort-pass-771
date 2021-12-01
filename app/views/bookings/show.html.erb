@@ -1,0 +1,15 @@
+<div class="container">
+  <h2><%= current_user.email %>'s Bookings</h2>
+  <div class="row row-cols-3">
+  <br>
+    <% @bookings.each do  |b| %>
+    <div class="card mx-5" style="border-radius: 20px; padding: 20px;">
+      <h1><%= b.reservation.listing.name %></h1>
+      <h1>Booking id = <%= b.id %></h1>
+      <h3>Adults = <%= b.no_of_adult %></h3>
+      <h3>Children = <%= b.no_of_child %></h3>
+      <h3>Total price = $<%= b.total_price %></h3>
+    </div>
+    <% end %>
+  </div>
+</div>

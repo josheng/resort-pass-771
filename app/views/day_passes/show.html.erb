@@ -1,10 +1,11 @@
 <div class="row">
+<h2><%= current_user %> Bookings</h2>
+    <% @bookings.each do |b| %>
   <div class="col-lg-8">
-    <h1><%= @daypass.listing.name %></h1>
-    <h3><%= @daypass.listing.details %></h3>
+    <h1><%= b.id %></h1>
+    <h3>Adults = <%= b.no_of_adult %></h3>
+    <h3>Children = <%= b.no_of_child %></h3>
+    <h3><%= b.total_price %></h3>
   </div>
-  <div class="col-lg-4">
-    <h3><%= @daypass.daypass_type %></h3>
-    <h4></h4>
-  </div>
+  <% end %>
 </div>

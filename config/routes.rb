@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :listings, only: [] do
     resources :bookings, only: %i[create new]
-    resources :reviews, only: %i[create]
+    resources :reviews, only: %i[create new]
   end
 
   resources :bookings, only: %i[index show]

@@ -1,5 +1,10 @@
-<h2>User profile</h2>
-
-<% if user_signed_in? %>
-  <%= current_user.email %>
-<% end %>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-6">
+      <%= render "shared/usercard" %>
+    </div>
+    <div class="col-6">
+      <%= render "shared/booking" %>
+    </div>
+  </div>
+</div>

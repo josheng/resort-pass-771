@@ -1,15 +1,18 @@
 <div class="container">
-  <h2><%= current_user.email %>'s Bookings</h2>
-  <div class="row row-cols-3">
-  <br>
-    <% @bookings.each do  |b| %>
-    <div class="card mx-2" style="border-radius: 20px; padding: 20px;">
-      <h1><%= b.reservation.listing.name %></h1>
-      <h1>Booking id = <%= b.id %></h1>
-      <h3>Adults = <%= b.no_of_adult %></h3>
-      <h3>Children = <%= b.no_of_child %></h3>
-      <h3>Total price = $<%= b.total_price %></h3>
+  <h1>Booking at <%= @bookings.reservation.listing.name %></h1>
+  <div class="card-trip">
+  <img src="https://source.unsplash.com/random/?resort" />
+  <div class="card-trip-infos">
+    <div>
+      <h2>Booked on <%= @bookings.booking_date  %></h2>
+      <p>Address: <%= "#{@bookings.full_address}" %></p>
+      <p><u>Total Pax</u></p>
+      <p>Adult: <%= @bookings.no_of_adult %></p>
+      <p>Child: <%= @bookings.no_of_child %></p>
+      <%= link_to "Leave a Review", new_listing_review_path(@bookings)  %>
     </div>
-    <% end %>
+    <h2 class="card-trip-pricing">$<%= @bookings.total_price %></h2>
   </div>
+</div>
+
 </div>

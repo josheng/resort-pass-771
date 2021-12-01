@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @bookings = current_user.bookings
+    @bookings = current_user.bookings.find(params[:id])
   end
 
   private

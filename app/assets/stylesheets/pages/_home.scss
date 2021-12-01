@@ -1,19 +1,20 @@
 // Specific CSS for your home-page
+h1 {
+  font-family: Comfortaa, sans-serif;
+  font-weight: bold;
+}
+
+h2 span{
+  font-weight: lighter;
+}
+
 .title-banner {
   height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.search-bar-input {
-  height: 80px;
-  font-size: 24px;
-}
 
-.btn-size {
-  height: 80px;
-  margin: 0 1rem;
-}
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
@@ -47,9 +48,7 @@
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-  .search-bar-input {
-  width: 750px;
-  }
+
   .btn-size {
     width: 200px;
   }
@@ -57,9 +56,7 @@
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  .search-bar-input {
-  width: 750px;
-  }
+
   .btn-size {
     width: 200px;
   }

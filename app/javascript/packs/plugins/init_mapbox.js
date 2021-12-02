@@ -1,11 +1,11 @@
 import mapboxgl from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
+// import "mapbox-gl/dist/mapbox-gl.css";
 
 
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
   bounds.extend([markers.lng, markers.lat]);
-  map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+  map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 500 });
 };
 
 const initMapbox = () => {
@@ -20,9 +20,16 @@ const initMapbox = () => {
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);
-    new mapboxgl.Marker().setLngLat([markers.lng, markers.lat]).addTo(map);
-
+    // markers.forEach((marker) => {
+    //   new mapboxgl.Marker()
+    //     .setLngLat([marker.lng, marker.lat])
+    //     .addTo(map);
+    //   });
+      // const markers = JSON.parse(mapElement.dataset.markers);
+    const popup = new mapboxgl.Popup().setHTML(markers.info_window);
+    new mapboxgl.Marker().setLngLat([markers.lng, markers.lat]).setPopup(popup).addTo(map);
     fitMapToMarkers(map, markers);
+
 
   }
 

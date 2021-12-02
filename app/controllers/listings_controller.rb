@@ -17,7 +17,7 @@ class ListingsController < ApplicationController
     @search = params["search"]
     if @search.present?
       @name = @search["name"]
-      @listings = Listing.where("name ILIKE ?", "%#{@name}%")
+      @listings = Listing.search_by_name_and_location(@name)
     end
   end
 

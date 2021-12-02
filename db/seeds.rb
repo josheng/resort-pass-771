@@ -16,6 +16,7 @@ Booking.destroy_all
 puts "Creating the dummy hotel partner 🏨"
 User.create!(email: "test@test.com", password: "12345678!", hotel_partner: true)
 
+Faker::Config.locale = 'en-US'
 puts "Seeding Users, Listing and Daypasses 🌱"
 20.times do |index|
   puts "Creating the Users 🙋🏻‍♂️"
@@ -26,14 +27,14 @@ puts "Seeding Users, Listing and Daypasses 🌱"
     password: Faker::Internet.password(min_length: 8)
   )
   puts "Creating the listing 🏩"
-  city = Faker::Nation.capital_city
+  city = Faker::Address.city
   Listing.create!(
     name: "#{city} Hotel",
     address: Faker::Address.street_address,
     details: Faker::Lorem.paragraph(sentence_count: 10),
     city: city,
     state: Faker::Address.state,
-    country: Faker::Address.country,
+    country: "United States of America",
     user_id: 1
   )
   puts "Creating Adult and Child Prices 👨‍👧"

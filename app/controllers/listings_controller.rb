@@ -9,7 +9,10 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @reservation = @listing.reservations.find_by(type: 'DayPass')
     @booking = Booking.new
-    @markers = {lat: 1.3019, lng: 103.83 }
+    # @markers = {lat: 1.3019, lng: 103.83 }
+    @markers = { lat: @listing.geocode[0],
+                 lng: @listing.geocode[1],
+                 info_window: render_to_string(partial: "shared/info_window", locals: { listing: @listing }) }
   end
 
   def search

@@ -27,6 +27,7 @@
       </div>
 
       <div class = "day-pass">
+      <!---
         <h2>Day Pass includes:</h2>
         <ul>
           <li>Outdoor rooftop pool</li>
@@ -39,8 +40,16 @@
           <li>Complimentary wifi</li>
           <li>Discounted valet parking available for $12/day</li>
         </ul>
+      --->
+        <h2><%= @listing.reservations.first.details.split("\n")[0] %></h2>
+        <ul>
+        <% @listing.reservations.first.details.split("\n")[2..-1].each do |list| %>
+          <li><%= list %></li>
+        <% end %>
+        </ul>
       </div>
 
+<!---
       <div class = "spa-pass">
         <h2>Spa Pass includes:</h2>
         <p>Valued at $250</p>
@@ -54,6 +63,7 @@
         </ul>
         <p>Instructions to schedule your treatment time will be provided after booking.</p>
       </div>
+--->
 
       <div class="grey-box">
         <strong>How it works</strong>

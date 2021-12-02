@@ -24,6 +24,7 @@ puts "Creating the dummy hotel partner 🏨"
 User.create!(email: "test@test.com", password: "12345678!", hotel_partner: true)
 
 
+count = 1
 puts "Creating the listing 🏩"
 hotels.each do |key, _value|
   Listing.create!(
@@ -31,11 +32,21 @@ hotels.each do |key, _value|
     address: hotels[key]["address"],
     details: hotels[key]["description"],
     city: hotels[key]["city"],
-    state: hotels[key]["state"],
+    state: Faker::Address.state,
     country: "United States of America",
     facilities: hotels[key]["icons"],
     user_id: 1
   )
+
+  puts "Creating Adult and Child Prices 👨‍👧"
+  DayPass.create!(
+    adult_price: rand(89..129),
+    child_price: rand(39..69),
+    details: hotels[key]["passes"],
+    listing_id: count
+  )
+
+  count += 1
   # p key # hotel name
   # p hotels[key]["description"] #description
   # p hotels[key]["hours"] #hours
@@ -47,19 +58,13 @@ end
 
 Faker::Config.locale = 'en-US'
 puts "Seeding Users and Daypasses 🌱"
-20.times do |index|
+20.times do
   puts "Creating the Users 🙋🏻‍♂️"
   User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 8)
-  )
-  puts "Creating Adult and Child Prices 👨‍👧"
-  DayPass.create!(
-    adult_price: rand(89..129),
-    child_price: rand(39..69),
-    listing_id: index + 1
   )
 end
 

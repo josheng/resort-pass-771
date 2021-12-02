@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "mapbox-gl/dist/mapbox-gl.css";
 import { initMapbox } from '../packs/plugins/init_mapbox.js';
+import { initCarousel} from '../packs/plugins/init_carousel.js';
 
 Rails.start()
 Turbolinks.start()
@@ -30,4 +31,5 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initMapbox();
+  initCarousel();
 });

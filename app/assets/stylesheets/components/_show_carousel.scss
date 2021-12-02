@@ -12,7 +12,7 @@ Attribution required
 
 
 @media (min-width: 768px) {
-
+.show-carousel{
     /* show 3 items */
     .carousel-inner .active,
     .carousel-inner .active + .carousel-item,
@@ -73,5 +73,5 @@ Attribution required
         display: block;
         visibility: visible;
     }
-
+  }
 }

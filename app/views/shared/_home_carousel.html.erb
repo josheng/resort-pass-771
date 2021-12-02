@@ -1,0 +1,24 @@
+<!-- Top content -->
+<div class="text-center my-3">
+    <div class="row mx-auto my-auto">
+        <div id="myCarousel" class="carousel slide w-100" data-ride="carousel">
+            <div class="carousel-inner w-100" role="listbox">
+              <% 8.times do |n| %>
+                <div class="carousel-item <%= n.zero? ? "active" : "" %>">
+                    <div class="col-lg-2">
+                        <img class="img-fluid" src="<%= asset_path("pool_images/0#{n+1}.jpg") %>">
+                    </div>
+                </div>
+                <% end %>
+            </div>
+            <a class="carousel-control-prev bg-dark w-auto contorl-bg" href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next bg-dark w-auto control-bg" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,12 +1,25 @@
+<% search = [] %>
+<% if @listing.present? %>
+  <% 8.times do |n| %>
+    <% search << "https://picsum.photos/1920/1080?#{@listing.name.gsub(" ","-")},#{n}" %>
+  <% end %>
+  <% else %>
+  <% 8.times do |n| %>
+    <% term = %w[happy joy play fun].sample%>
+    <% size = %w[200x300 200x350 200x325 200x250].sample %>
+    <% search << "https://source.unsplash.com/#{size}/?pool,#{term}" %>
+  <% end %>
+<% end %>
+
 <div class="container-fluid">
-    <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000">
+    <div id="carouselExample" class="carousel slide show-carousel" data-ride="carousel" data-interval="9000">
         <div class="carousel-inner row w-10 mxauto" role="listbox">
             <div class="carousel-item col-md-4 active">
-                <img class="img-fluid mx-1 d-bloc" src="https://picsum.photos/1920/1080?<%= @listing.name.gsub(" ","-") %>,1" alt="slide 1">
+                <img class="img-fluid mx-1 d-bloc" src=<%= search[0] %> alt="slide 1">
             </div>
             <% 7.times do |n| %>
             <div class="carousel-item col-md-4">
-                <img class="img-fluid mx-1 d-block" src="https://picsum.photos/1920/1080?<%= @listing.name.gsub(" ","-") %>,<%= n + 1 %>" alt="slide <%= n + 1 %>">
+                <img class="img-fluid mx-1 d-block" src=<%= search[n] %> alt="slide <%= n + 1 %>">
             </div>
             <% end %>
         </div>
@@ -20,6 +33,3 @@
         </a>
     </div>
 </div>
-
-
-<!--"https://source.unsplash.com/1920x1080/?<%= @listing.name %>resort"-->

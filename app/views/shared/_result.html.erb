@@ -5,13 +5,33 @@
         <div class="card-product my-3" style="border-radius: 1rem;">
           <img src="https://source.unsplash.com/400x300/?<%= listing.city%>,resort" />
           <div class="card-product-infos">
-            <h2><%= listing.name %><span class=""></h2>
+            <h2><%= listing.name %></h2>
+            <% reviews_score = 0 %>
+            <% listing.reviews.each { |r| reviews_score += r["rating"] } %>
+            <% average_score = reviews_score /  listing.reviews.count %>
+            <p><% average_score.times do %>⭐<% end %> <%= listing.reviews.count %> Reviews </p>
             <small><%= listing.city %></small>
             <p><%= listing.details %></p>
-            <%= link_to "View", listing_path(listing) , class:"btn btn-info my-2"%>
+            <div class="d-flex align-items-center">
+              <div class="packages flex-grow-1 mx-4">
+                <h3 class="text-center border-bottom">Day Pass</h3>
+                <div class="prices d-flex justify-content-around">
+                  <div class="adult">
+                  <h4>Adult</h4>
+                  <h5>$ <%= listing.reservations.first.adult_price %></h5>
+                  </div>
+                  <div class="child">
+                  <h4>Child</h4>
+                  <h5>$ <%= listing.reservations.first.child_price %></h5>
+                  </div>
+                </div>
+              </div>
+              <%= link_to "View", listing_path(listing) , class:"btn btn-info"%>
+            </div>
           </div>
         </div>
       <% end %>
+
   <% elsif params[:search].include?(:name) %>
     <% if @listings.empty? %>
       <h4 class="mt-2">Your search for '<%= params["search"]["name"].capitalize %>' returned no result.</h4>
@@ -21,10 +41,29 @@
       <div class="card-product my-3" style="border-radius: 1rem;">
         <img src="https://source.unsplash.com/400x300/?<%= listing.city%>,resort" />
         <div class="card-product-infos">
-          <h2><%= listing.name %><span class=""></h2>
+          <h2><%= listing.name %></h2>
+          <% reviews_score = 0 %>
+          <% listing.reviews.each { |r| reviews_score += r["rating"] } %>
+          <% average_score = reviews_score /  listing.reviews.count %>
+          <p><% average_score.times do %>⭐<% end %> <%= listing.reviews.count %> Reviews </p>
           <small><%= listing.city %></small>
           <p><%= listing.details %></p>
-          <%= link_to "View", listing_path(listing) , class:"btn btn-info my-2"%>
+            <div class="d-flex align-items-center">
+              <div class="packages flex-grow-1 mx-4">
+                <h3 class="text-center border-bottom">Day Pass</h3>
+                <div class="prices d-flex justify-content-around">
+                  <div class="adult">
+                  <h4>Adult</h4>
+                  <h5>$ <%= listing.reservations.first.adult_price %></h5>
+                  </div>
+                  <div class="child">
+                  <h4>Child</h4>
+                  <h5>$ <%= listing.reservations.first.child_price %></h5>
+                  </div>
+                </div>
+              </div>
+              <%= link_to "View", listing_path(listing) , class:"btn btn-info"%>
+            </div>
         </div>
       </div>
       <% end %>

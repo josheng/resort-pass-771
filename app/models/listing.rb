@@ -1,7 +1,7 @@
 class Listing < ApplicationRecord
   belongs_to :user
-  has_many :reservations
-  has_many :reviews
+  has_many :reservations, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   serialize :hours, Array
   serialize :facilities, Array
   geocoded_by :address

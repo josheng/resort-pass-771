@@ -21,41 +21,13 @@ Reservation.destroy_all
 Booking.destroy_all
 
 puts "Creating the dummy hotel partner 🏨"
-User.create!(email: "test@test.com", password: "12345678!", hotel_partner: true)
-
-
-count = 1
-puts "Creating the listing 🏩"
-hotels.each do |key, _value|
-  Listing.create!(
-    name: key,
-    address: hotels[key]["full_address"],
-    details: hotels[key]["description"],
-    city: hotels[key]["city"],
-    state: hotels[key]["state"],
-    country: "United States of America",
-    facilities: hotels[key]["icons"],
-    hours: hotels[key]["hours"],
-    user_id: 1
-  )
-
-  puts "Creating Adult and Child Prices 👨‍👧"
-  DayPass.create!(
-    adult_price: rand(89..129),
-    child_price: rand(39..69),
-    details: hotels[key]["passes"],
-    listing_id: count
-  )
-
-  count += 1
-  # p key # hotel name
-  # p hotels[key]["description"] #description
-  # p hotels[key]["hours"] #hours
-  # p hotels[key]["address"] #address
-  # p hotels[key]["city"] #city
-  # p hotels[key]["state"] #state
-  # p hotels[key]["icons"] #icons
-end
+User.create!(
+  email: "test@test.com",
+  password: "12345678!",
+  hotel_partner: true,
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name
+)
 
 Faker::Config.locale = 'en-US'
 puts "Seeding Users and Daypasses 🌱"
@@ -69,18 +41,54 @@ puts "Seeding Users and Daypasses 🌱"
   )
 end
 
-puts "Seeding the reviews 🌱"
-20.times do |index|
+
+count = 1
+puts "Creating the listing 🏩"
+hotels.each do |key, _value|
+  # binding.pry
+  Listing.create!(
+    name: key,
+    address: hotels[key]["full_address"],
+    details: hotels[key]["description"],
+    city: hotels[key]["city"],
+    state: hotels[key]["state"],
+    country: "United States of America",
+    facilities: hotels[key]["icons"],
+    hours: hotels[key]["hours"],
+    user_id: User.first.id
+  )
+  # binding.pry
+  puts "Creating Adult and Child Prices 👨‍👧"
+  DayPass.create!(
+    adult_price: rand(89..129),
+    child_price: rand(39..69),
+    details: hotels[key]["passes"],
+    listing_id: Listing.last.id
+  )
+  puts "Seeding the reviews 🌱"
   rand(1..50).times do
     Review.create!(
       title: Faker::Marketing.buzzwords,
       content: Faker::Restaurant.review,
       rating: rand(3..5),
-      user_id: rand(2..21),
-      listing_id: index + 1
+      user_id: User.all.sample.id,
+      listing_id: Listing.last.id
     )
   end
+
+  count += 1
+  # p key # hotel name
+  # p hotels[key]["description"] #description
+  # p hotels[key]["hours"] #hours
+  # p hotels[key]["address"] #address
+  # p hotels[key]["city"] #city
+  # p hotels[key]["state"] #state
+  # p hotels[key]["icons"] #icons
 end
+
+
+
+
 
 
 puts "Seeding Done"

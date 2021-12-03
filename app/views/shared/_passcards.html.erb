@@ -1,12 +1,16 @@
 <div class="card text-black mb-3" style="max-width: 18rem;">
-  <div class="card-header"><%= @listing.reservations.first.type.split("P").join(" P") %></div>
+  <div class="card-header text-center"><%= @listing.reservations.first.type.split("P").join(" P") %></div>
   <div class="card-body">
     <% @listing.reservations.each do |pass| %>
-    <div class="div">
-        <h5 class="card-title">Adult</h5>
-        <p class="card-text">$<%= pass.adult_price %></p>
-        <h5 class="card-title">Child</h5>
-        <p class="card-text">$<%= pass.child_price %></p>
+    <div class="div d-flex justify-content-around">
+        <div class="adult">
+          <h5 class="card-title">Adult</h5>
+          <p class="card-text">$<%= pass.adult_price %></p>
+        </div>
+        <div class="child">
+          <h5 class="card-title">Child</h5>
+          <p class="card-text">$<%= pass.child_price %></p>
+        </div>
     </div>
     <% end %>
   </div>
@@ -14,9 +18,9 @@
 
 
 <%= simple_form_for [@listing, @booking] do |f| %>
-  <%= f.input :booking_date, as: :date %>
+  <%= f.input :booking_date, as: :date , html5: true%>
   <%= f.input :no_of_adult, as: :integer %>
   <%= f.input :no_of_child, as: :integer %>
   <%= f.hidden_field :reservation_id, value: @reservation.id %>
-  <%= f.submit :create_booking %>
+  <%= f.button :submit, class:"btn btn-warning" %>
 <% end %>

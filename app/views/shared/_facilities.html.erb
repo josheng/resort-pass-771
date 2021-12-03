@@ -1,0 +1,6 @@
+<% icon_hash = { "Pool" => "fas fa-swimming-pool", "Food Service" => "fas fa-utensils", "Drink Service" => "fas fa-cocktail", "Cabana" => "fas fa-archway", "Hot Tub" => "fas fa-hot-tub", "Fitness Center" => "fas fa-dumbbell", "Spa" => "fas fa-spa", "Beach Access" => "fas fa-umbrella-beach"} %>
+
+  <% @listing.facilities.each do |icon| %>
+    <i class="<%= icon_hash[icon] %> pr-2 my-3 text-primary" data-toggle="tooltip" data-placement="top" title="<%= icon %>"></i>
+
+  <% end %>

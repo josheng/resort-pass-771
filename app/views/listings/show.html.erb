@@ -27,50 +27,34 @@
       </div>
 
       <div class = "day-pass">
-      <!---
-        <h2>Day Pass includes:</h2>
-        <ul>
-          <li>Outdoor rooftop pool</li>
-          <li>Lounge chair (based on availability)</li>
-          <li>Food and drinks available for purchase from Bluewater</li>
-          <li>Towel service</li>
-          <li>Changing rooms and lockers</li>
-          <li>Fitness center</li>
-          <li>Refreshing water station</li>
-          <li>Complimentary wifi</li>
-          <li>Discounted valet parking available for $12/day</li>
-        </ul>
-      --->
-        <h2><%= @listing.reservations.first.details.split("\n")[0] %></h2>
-        <ul>
-        <% @listing.reservations.first.details.split("\n")[2..-1].each do |list| %>
-          <li><%= list %></li>
+        <% @listing.reservations.first.details.each do |list| %>
+          <% if list.include?(":") %>
+            <h5 class="mt-2"><%= list %></h5>
+          <% else %>
+            <li class="ml-5"><%= list %></li>
+          <% end %>
         <% end %>
-        </ul>
-      </div>
-
-<!---
-      <div class = "spa-pass">
-        <h2>Spa Pass includes:</h2>
-        <p>Valued at $250</p>
         <ul>
-          <li>Day Pass (all amenities included in the Day Pass)</li>
-          <li>50-minute massage treatment at mySpa</li>
-          <li>Relaxation room</li>
-          <li>Steam room and sauna (temporarily closed)</li>
-          <li>Complimentary glass of champagne</li>
-          <li>Complimentary valet parking for up to 4 hours</li>
         </ul>
-        <p>Instructions to schedule your treatment time will be provided after booking.</p>
       </div>
---->
+      <div class="hours">
+        <% @listing.hours.each do |hour| %>
 
-      <div class="grey-box">
+          <% if hour.include?(":") %>
+            <li class="ml-5"><%= hour %></li>
+          <% else %>
+            <h5 class="mt-2"><%= hour %></h5>
+          <% end %>
+
+        <% end %>
+      </div>
+
+      <div class="grey-box p-5 mb-3">
         <strong>How it works</strong>
-        <p>1. Select number of people, an available day in the calendar, and book</p>
-        <p>2. Receive booking confirmation with details and instructions</p>
-        <p>3. Bring valid photo ID to hotel and check-in at the Hotel Concierge desk. You will receive a day use wristband.</p>
-        <p>4. Enjoy your daycation!</p>
+            <p>1. Select number of people, an available day in the calendar, and book</p>
+            <p>2. Receive booking confirmation with details and instructions</p>
+            <p>3. Bring valid photo ID to hotel and check-in at the Hotel Concierge desk. You will receive a day use wristband.</p>
+            <p>4. Enjoy your daycation!</p>
         <br>
         <strong>Cancellation Policy</strong>
         <p>To read our full cancellation policy, click here.</p>
@@ -86,16 +70,15 @@
       <%= render "shared/passcards" %>
     </div>
 
-    <div class="col-5">
+    <div class="col-5 my-3">
       <%= render "shared/map" %>
     </div>
     <div class="col-3">
       <b>Address</b><br>
-      <small><%= @listing.full_address %></small>
+      <small><%= @listing.address %></small>
     </div>
 
   </div>
 </div>
 
 <%= render "shared/reviewcard" %>
-<%= render "shared/footer" %>

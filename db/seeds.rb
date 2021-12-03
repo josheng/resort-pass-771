@@ -29,12 +29,13 @@ puts "Creating the listing 🏩"
 hotels.each do |key, _value|
   Listing.create!(
     name: key,
-    address: hotels[key]["address"],
+    address: hotels[key]["full_address"],
     details: hotels[key]["description"],
     city: hotels[key]["city"],
-    state: Faker::Address.state,
+    state: hotels[key]["state"],
     country: "United States of America",
     facilities: hotels[key]["icons"],
+    hours: hotels[key]["hours"],
     user_id: 1
   )
 

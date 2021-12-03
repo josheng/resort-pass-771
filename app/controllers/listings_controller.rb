@@ -16,6 +16,13 @@ class ListingsController < ApplicationController
                   lng: @listing.geocode[1],
                   info_window: render_to_string(partial: "shared/info_window", locals: { listing: @listing }) }
     end
+
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: { entries: render_to_string(partial: "shared/reviews", formats: [:html]), pagination: view_context.pagy_nav(@pagy) }
+      }
+    end
   end
 
   def search

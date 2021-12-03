@@ -7,7 +7,7 @@ const initCarousel = () => {
   if (carousel) {
 
     $('#myCarousel').carousel({
-      interval: 10000
+      interval: 2000
     })
 
     $('.carousel .carousel-item').each(function () {

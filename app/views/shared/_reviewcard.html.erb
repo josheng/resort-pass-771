@@ -1,23 +1,18 @@
-<div data-controller="infinite-scroll">
-  <div data-target="entries">
-    <div class="container border-top">
-      <div class="row pt-3">
+<div class="container">
+  <h3>Reviews</h3>
+</div>
+<div class="container border-top">
+  <div class="row pt-3">
+    <div data-controller="infinite-scroll" data-action="scroll@window->infinite-scroll#scroll">
+      <div data-target="infinite-scroll.entries">
         <div class="col">
-          <h3>Reviews</h3>
-          <% @records.each do |list| %>
-            <div class="card-body border-bottom border-top">
-              <h4>
-              <% list.rating.times do %>⭐️<% end %> <span><%= list.title %></span>
-              </h4>
-              <p>
-              <%= list.created_at.strftime("%B %d, %Y") %> <%= "#{list.user.first_name} #{list.user.last_name.first}." %>
-              </p>
-              <p><small><%= list.content %></small></p>
-            </div>
-          <% end %>
-          <%== pagy_nav @pagy%>
+          <%= render 'shared/reviews' %>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<div class="container" data-target="infinite-scroll.pagination">
+  <%== pagy_nav @pagy%>
 </div>

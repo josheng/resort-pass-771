@@ -7,10 +7,10 @@
           <div class="card-product-infos">
             <h2><%= listing.name %></h2>
           <% unless listing.reviews.count.zero? %>
-          <% reviews_score = 0 %>
-          <% listing.reviews.each { |r| reviews_score += r["rating"] } %>
-          <% average_score = reviews_score /  listing.reviews.count %>
-          <p><% average_score.times do %>⭐<% end %> <%= listing.reviews.count %> Reviews </p>
+            <% reviews_score = 0 %>
+            <% listing.reviews.each { |r| reviews_score += r["rating"] } %>
+            <% average_score = reviews_score /  listing.reviews.count %>
+            <p><% average_score.times do %>⭐<% end %> <%= listing.reviews.count %> Reviews </p>
           <% end %>
             <small><%= listing.city %></small>
             <p><%= listing.details %></p>
@@ -45,10 +45,10 @@
         <div class="card-product-infos">
           <h2><%= listing.name %></h2>
           <% unless listing.reviews.count.zero? %>
-          <% reviews_score = 0 %>
-          <% listing.reviews.each { |r| reviews_score += r["rating"] } %>
-          <% average_score = reviews_score /  listing.reviews.count %>
-          <p><% average_score.times do %>⭐<% end %> <%= listing.reviews.count %> Reviews </p>
+            <% reviews_score = 0 %>
+            <% listing.reviews.each { |r| reviews_score += r["rating"] } %>
+            <% average_score = reviews_score /  listing.reviews.count %>
+            <p><% average_score.times do %>⭐<% end %> <%= listing.reviews.count %> Reviews </p>
           <% end %>
           <small><%= listing.city %></small>
           <p><%= listing.details %></p>

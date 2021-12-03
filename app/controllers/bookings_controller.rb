@@ -11,15 +11,15 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.reservation = Reservation.find(params[:booking][:reservation_id])
+    # @booking.listing = @booking.reservation.listing
     if @booking.no_of_adult.present? || @booking.no_of_child.present?
       @booking.total_price = (@booking.no_of_adult * @booking.reservation.adult_price) + (@booking.no_of_child * @booking.reservation.child_price)
       @booking.save
       redirect_to @booking
     else
-      # render listing_path(@booking.reservation.listing)
-      render "shared/result"
+      # redirect_to listing_path(@booking.reservation.listing)
+      redirect_to listing_path(@booking.reservation.listing)
     end
-    # @booking.listing = @booking.reservation.listing
     # if @booking.save
     #   redirect_to @booking
     # else

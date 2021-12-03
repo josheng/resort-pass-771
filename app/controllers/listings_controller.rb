@@ -9,6 +9,7 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @reservation = @listing.reservations.find_by(type: 'DayPass')
     @booking = Booking.new
+    @pagy, @records = pagy(@listing.reviews)
     # @markers = {lat: 1.3019, lng: 103.83 }
     if @listing.geocode.present?
       @markers = { lat: @listing.geocode[0],

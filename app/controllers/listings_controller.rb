@@ -32,13 +32,13 @@ class ListingsController < ApplicationController
     if @search.present?
       @name = @search["name"]
       @listings = Listing.search_by_name_and_location(@name)
-      @pagy, @records = pagy(@listings)
+      @pagy, @records = pagy(@listings, items: 10)
     end
   end
 
   def filter
     filter = params["format"]
     @listings = Listing.where(state: filter)
-    @pagy, @records = pagy(@listings)
+    @pagy, @records = pagy(@listings, items: 10)
   end
 end

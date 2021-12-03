@@ -1,6 +1,11 @@
 <div class="container">
-  <h2 class="my-3">Hotels</h2>
-  <% @listings.each do |l| %>
-    <p><%= link_to "#{l.name}", listing_path(l) %></p>
-  <% end %>
+  <h2 class="text-center my-3">Hotels</h2>
+  <div class="row row-cols-3">
+    <% @records.each do |l| %>
+      <div class="col">
+        <p><%= link_to "#{l.name}", listing_path(l) %></p>
+      </div>
+    <% end %>
+  </div>
+  <%== pagy_nav @pagy%>
 </div>

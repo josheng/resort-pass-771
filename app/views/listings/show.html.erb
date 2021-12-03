@@ -27,43 +27,27 @@
       </div>
 
       <div class = "day-pass">
-      <!---
-        <h2>Day Pass includes:</h2>
-        <ul>
-          <li>Outdoor rooftop pool</li>
-          <li>Lounge chair (based on availability)</li>
-          <li>Food and drinks available for purchase from Bluewater</li>
-          <li>Towel service</li>
-          <li>Changing rooms and lockers</li>
-          <li>Fitness center</li>
-          <li>Refreshing water station</li>
-          <li>Complimentary wifi</li>
-          <li>Discounted valet parking available for $12/day</li>
-        </ul>
-      --->
-        <h2><%= @listing.reservations.first.details.split("\n")[0] %></h2>
-        <ul>
-        <% @listing.reservations.first.details.split("\n")[2..-1].each do |list| %>
-          <li><%= list %></li>
+        <% @listing.reservations.first.details.each do |list| %>
+          <% if list.include?(":") %>
+            <h5 class="mt-2"><%= list %></h5>
+          <% else %>
+            <li class="ml-5"><%= list %></li>
+          <% end %>
         <% end %>
-        </ul>
-      </div>
-
-<!---
-      <div class = "spa-pass">
-        <h2>Spa Pass includes:</h2>
-        <p>Valued at $250</p>
         <ul>
-          <li>Day Pass (all amenities included in the Day Pass)</li>
-          <li>50-minute massage treatment at mySpa</li>
-          <li>Relaxation room</li>
-          <li>Steam room and sauna (temporarily closed)</li>
-          <li>Complimentary glass of champagne</li>
-          <li>Complimentary valet parking for up to 4 hours</li>
         </ul>
-        <p>Instructions to schedule your treatment time will be provided after booking.</p>
       </div>
---->
+      <div class="hours">
+        <% @listing.hours.each do |hour| %>
+
+          <% if hour.include?(":") %>
+            <li class="ml-5"><%= hour %></li>
+          <% else %>
+            <h5 class="mt-2"><%= hour %></h5>
+          <% end %>
+
+        <% end %>
+      </div>
 
       <div class="grey-box">
         <strong>How it works</strong>
@@ -91,7 +75,7 @@
     </div>
     <div class="col-3">
       <b>Address</b><br>
-      <small><%= @listing.full_address %></small>
+      <small><%= @listing.address %></small>
     </div>
 
   </div>

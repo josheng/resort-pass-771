@@ -50,7 +50,7 @@
             <% average_score = reviews_score /  listing.reviews.count %>
             <p><% average_score.times do %>⭐<% end %> <%= listing.reviews.count %> Reviews </p>
           <% end %>
-          <small><%= listing.city %></small>
+          <small><%= listing.address %></small>
           <p><%= listing.details %></p>
             <div class="d-flex align-items-center">
               <div class="packages flex-grow-1 mx-4">

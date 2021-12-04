@@ -2,7 +2,7 @@
   <div class="card-header text-center"><%= @listing.reservations.first.type.split("P").join(" P") %></div>
   <div class="card-body">
     <% @listing.reservations.each do |pass| %>
-    <div class="div d-flex justify-content-around">
+    <div class="div d-flex justify-content-around mb-2">
         <div class="adult">
           <h5 class="card-title">Adult</h5>
           <p class="card-text">$<%= pass.adult_price %></p>
@@ -13,14 +13,12 @@
         </div>
     </div>
     <% end %>
-  </div>
-</div>
-
-
 <%= simple_form_for [@listing, @booking] do |f| %>
-  <%= f.input :booking_date, as: :date , html5: true%>
-  <%= f.input :no_of_adult, as: :integer %>
-  <%= f.input :no_of_child, as: :integer %>
+  <%= f.input :booking_date, as: :date , html5: true, required: true %>
+  <%= f.input :no_of_adult, as: :numeric, required: true, input_html: {value: '1'} %>
+  <%= f.input :no_of_child, as: :numeric, required: true, input_html: {value: '0'} %>
   <%= f.hidden_field :reservation_id, value: @reservation.id %>
   <%= f.button :submit, class:"btn btn-warning" %>
 <% end %>
+  </div>
+</div>

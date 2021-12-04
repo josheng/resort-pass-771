@@ -3,6 +3,7 @@ class ListingsController < ApplicationController
 
   def index
     @listings = Listing.all
+    @pagy, @records = pagy(@listings, items: 50)
   end
 
   def show
@@ -16,6 +17,13 @@ class ListingsController < ApplicationController
                   lng: @listing.geocode[1],
                   info_window: render_to_string(partial: "shared/info_window", locals: { listing: @listing }) }
     end
+
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: { entries: render_to_string(partial: "shared/reviews", formats: [:html]), pagination: view_context.pagy_nav(@pagy) }
+      }
+    end
   end
 
   def search
@@ -24,11 +32,13 @@ class ListingsController < ApplicationController
     if @search.present?
       @name = @search["name"]
       @listings = Listing.search_by_name_and_location(@name)
+      @pagy, @records = pagy(@listings)
     end
   end
 
   def filter
     filter = params["format"]
     @listings = Listing.where(state: filter)
+    @pagy, @records = pagy(@listings)
   end
 end

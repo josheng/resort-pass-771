@@ -1,0 +1,11 @@
+<% @records.each do |list| %>
+  <div class="card-body border-bottom border-top">
+    <h4>
+    <% list.rating.times do %>⭐️<% end %> <span><%= list.title %></span>
+    </h4>
+    <p>
+    <%= list.created_at.strftime("%B %d, %Y") %> <%= "#{list.user.first_name} #{list.user.last_name.first}." %>
+    </p>
+    <p><small><%= list.content %></small></p>
+  </div>
+<% end %>
